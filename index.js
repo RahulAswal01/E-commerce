@@ -1,12 +1,16 @@
+//imports;
 const express = require("express");
-
 const app = express();
-const mongoose = require("mongoose");
+const db = require("./config/mongoose-connection");
 const usermodel = require("./models/usermodel");
 const productmodel = require("./models/productmodel");
+const ownerRouter = require("./routes/ownerRoute");
+const productRouter = require("./routes/productRoute");
+const userRouter = require("./routes/userRoute");
 
-app.get("/", (req, res) => {
-  res.send("hey i am rahul");
-});
+//middlewares
+app.use("/owner", ownerRouter);
+app.use("/product", productRouter);
+app.use("/user", userRouter);
 
 app.listen(3000);

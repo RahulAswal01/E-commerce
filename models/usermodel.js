@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/sheryDB");
 
 const userSchema = mongoose.Schema({
   fullName: String,
@@ -9,7 +8,6 @@ const userSchema = mongoose.Schema({
     type: Array,
     default: [],
   },
-  isAdmin: Boolean,
   orders: {
     type: Array,
     default: [],
