@@ -4,7 +4,7 @@ const ownerschema = mongoose.Schema({
   picture: String,
   name: String,
   email: String,
-  password: Number,
+  password: String,
   product: [],
   gstno: String,
 });

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,751;1,751&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../stylesheets/base.css" />
+    <title>Register || Login</title>
+  </head>
+  <body>
+    <div
+      class="h-screen w-full bg-[#bfd5d6] flex justify-center items-center font-roboto"
+    >
+      <div
+        class="h-110 w-230 bg-linear-65 from-purple-500 to-pink-500 rounded-xl flex justify-center items-center gap-10"
+      >
+        <div class="w-1/2 h-95 mt-5 mx-5">
+          <h1 class="text-[#431554] text-center text-2xl font-bold">
+            Register
+          </h1>
+          <br />
+          <!-- 1stform -->
+          <form action="/user/createuser" method="post">
+            <input
+              type="text"
+              placeholder="Full Name"
+              name="fullName"
+              autocomplete="off"
+              required
+              class="my-3 mx-10 py-1 font-semibold px-3 border text-black outline-none rounded-md w-80"
+            />
+            <br />
+            <input
+              type="email"
+              placeholder="Email"
+              name="email"
+              autocomplete="new-Email"
+              required
+              class="my-3 mx-10 py-1 font-semibold px-3 border text-black outline-none rounded-md w-80"
+            />
+            <br />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              autocomplete="new-password"
+              required
+              class="my-3 mx-10 py-1 font-semibold px-3 border text-black outline-none rounded-md w-80"
+            />
+            <br />
+            <input
+              type="number"
+              placeholder="Contact no."
+              name="contactNo"
+              autocomplete="off"
+              required
+              class="my-3 no-spinner mx-10 py-1 font-semibold px-3 border text-black outline-none rounded-md w-80"
+            />
+            <br />
+            <input
+              type="submit"
+              value="Submit"
+              class="my-3 mx-20 py-1 font-semibold px-3 border rounded-md w-50 hover:bg-[#b38cc2]"
+            />
+          </form>
+        </div>
+        <div class="w-1/2 h-95 mt-5 mx-5">
+          <h1 class="text-[#431554] text-center text-2xl font-bold">login</h1>
+          <br />
+          <form action="/user/login" method="post">
+            <input
+              type="email"
+              placeholder="email"
+              autocomplete="new-email"
+              name="email"
+              required
+              class="my-3 mx-10 py-1 font-semibold px-3 border text-black outline-none rounded-md w-80"
+            />
+            <br />
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              autocomplete="new-password"
+              required
+              class="my-3 mx-10 py-1 font-semibold px-3 border text-black outline-none rounded-md w-80"
+            />
+            <br />
+            <input
+              type="submit"
+              value="Submit"
+              class="my-3 mx-20 py-1 font-semibold px-3 border rounded-md w-50 hover:bg-[#b38cc2]"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
