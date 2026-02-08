@@ -2,6 +2,19 @@ const express = require("express");
 const ownermodel = require("../models/ownermodel");
 const Router = express.Router();
 const bcrypt = require("bcrypt");
+const flash = require("connect-flash");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+
+app.use(cookieParser());
+app.use(flash());
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: false,
+    secret: "secretkey",
+  }),
+);
 
 Router.get("/", (req, res) => {
   res.send("hello from owner router");

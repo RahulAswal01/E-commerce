@@ -2,8 +2,20 @@ const express = require("express");
 const usermodel = require("../models/usermodel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
+const flash = require("connect-flash");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
 const Router = express.Router();
+
+app.use(cookieParser());
+app.use(flash());
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: false,
+    secret: "secretkey",
+  }),
+);
 
 Router.post("/createuser", async (req, res) => {
   let { fullName, email, password, contactNo } = req.body;
@@ -42,7 +54,7 @@ Router.post("/login", async (req, res) => {
     if (result) {
       let token = jwt.sign({ id: checkUser._id }, "secretkey");
       res.cookie("token", token);
-      return res.send("product page");
+      return res.redirect("/product/home");
     } else {
       res.send("invalid credentials");
     }
