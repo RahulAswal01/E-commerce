@@ -2,20 +2,8 @@ const express = require("express");
 const usermodel = require("../models/usermodel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const flash = require("connect-flash");
-const session = require("express-session");
-const cookieParser = require("cookie-parser");
 const Router = express.Router();
-
-app.use(cookieParser());
-app.use(flash());
-app.use(
-  session({
-    resave: false,
-    saveUninitialized: false,
-    secret: "secretkey",
-  }),
-);
+const { gentoken, generateToken } = require("../utilis/generateToken");
 
 Router.post("/createuser", async (req, res) => {
   let { fullName, email, password, contactNo } = req.body;
@@ -35,8 +23,6 @@ Router.post("/createuser", async (req, res) => {
         password: hash,
         contact: contactNo,
       });
-      // let token = jwt.sign({ id: createdUser._id }, "secretkey");
-      // res.cookie("token", token);
       return res.redirect("/");
     });
   });
@@ -52,8 +38,12 @@ Router.post("/login", async (req, res) => {
       throw err;
     }
     if (result) {
-      let token = jwt.sign({ id: checkUser._id }, "secretkey");
-      res.cookie("token", token);
+      let token = generateToken(checkUser);
+      if (token) {
+        res.cookie("token", token);
+      } else {
+        return res.send("err is send token");
+      }
       return res.redirect("/product/home");
     } else {
       res.send("invalid credentials");

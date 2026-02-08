@@ -1,4 +1,5 @@
 //imports;
+require("dotenv").config();
 const express = require("express");
 const flash = require("connect-flash");
 const session = require("express-session");
@@ -19,7 +20,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.use(cookieParser());
-app.use(flash());
 app.use(
   session({
     resave: false,
@@ -27,6 +27,7 @@ app.use(
     secret: "secretkey",
   }),
 );
+app.use(flash());
 app.use("/owner", ownerRouter);
 app.use("/product", productRouter);
 app.use("/user", userRouter);
