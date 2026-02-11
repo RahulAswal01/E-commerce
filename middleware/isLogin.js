@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const usermodel = require("../models/usermodel");
 
-module.exports.isLoggedIn = async (req, res, next) => {
+module.exports.isLogin = async (req, res, next) => {
   if (!req.cookies.token) {
     res.status(401);
     req.flash("tokenError", "something went wrong login first");

@@ -1,12 +1,12 @@
 const express = require("express");
 const Router = express.Router();
-const { isLoggedIn } = require("../middleware/isLoggedIn");
+const { isLogin } = require("../middleware/isLogin");
 
 Router.get("/", (req, res) => {
   res.send("hello from product router");
 });
 
-Router.get("/home", isLoggedIn, (req, res) => {
+Router.get("/home", isLogin, (req, res) => {
   res.render("product.ejs");
 });
 
