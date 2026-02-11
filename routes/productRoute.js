@@ -7,11 +7,13 @@ Router.get("/", (req, res) => {
 });
 
 Router.get("/home", isLogin, (req, res) => {
-  res.render("product.ejs");
+  let alert = req.flash("tokenInfo");
+  res.render("product.ejs", { alert });
 });
 
 Router.get("/logout", (req, res) => {
   res.clearCookie("token");
+  req.flash("tokenInfo", "logout sucessfull");
   res.redirect("/");
 });
 

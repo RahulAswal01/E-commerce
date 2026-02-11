@@ -6,7 +6,8 @@ module.exports.loginUser = async (req, res) => {
   let { email, password } = req.body;
   let checkUser = await usermodel.findOne({ email: email });
   if (!checkUser) {
-    return res.send("invalid credentials");
+    req.flash("tokenInfo", "invalid credentials");
+    return res.redirect("/");
   }
   bcrypt.compare(password, checkUser.password, (err, result) => {
     if (err) {
@@ -19,9 +20,11 @@ module.exports.loginUser = async (req, res) => {
       } else {
         return res.send("err is send token");
       }
+      req.flash("tokenInfo", "login sucessfull");
       return res.redirect("/product/home");
     } else {
-      res.send("invalid credentials");
+      req.flash("tokenInfo", "invalid credentials");
+      return res.redirect("/");
     }
   });
 };

@@ -14,15 +14,18 @@
     <title>Register || Login</title>
   </head>
   <body>
+    <% if(alert.length>0){%>
     <div
       class="absolute left-1\2 w-full -translate-x-1\2 -translate-y-1\2 p-3 rounded-md flex justify-center"
     >
       <span
         class="inline-block mt-1 w-120 mb-1 text-black font-extralight center bg-[#fff3cd]/70 rounded-md p-3"
       >
-        helloasdf
+        <%=alert[0]%>
       </span>
     </div>
+    <%}%>
+
     <div
       class="h-screen w-full bg-[#caccd9] flex justify-center items-center font-roboto"
     >

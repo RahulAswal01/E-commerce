@@ -15,6 +15,17 @@
     <title>Register || Login</title>
   </head>
   <body>
+    <% if(alert.length>0){%>
+    <div
+      class="absolute left-1\2 w-full -translate-x-1\2 -translate-y-1\2 p-3 rounded-md flex justify-center"
+    >
+      <span
+        class="inline-block mt-1 w-120 mb-1 text-black font-extralight center bg-[#fff3cd]/70 rounded-md p-3"
+      >
+        <%=alert[0]%>
+      </span>
+    </div>
+    <%}%>
     <div class="h-full w-full bg-[#ebecf0] font-roboto font-light text-black">
       <div
         class="h-18 text-black flex justify-between pt-5 bg-[#bae6e5] px-10 text-lg"

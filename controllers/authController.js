@@ -19,6 +19,7 @@ module.exports.createUser = async (req, res) => {
         password: hash,
         contact: contactNo,
       });
+      req.flash("tokenInfo", "User created Sucessfully");
       return res.redirect("/");
     });
   });

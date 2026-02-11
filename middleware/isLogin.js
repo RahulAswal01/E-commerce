@@ -4,8 +4,7 @@ const usermodel = require("../models/usermodel");
 module.exports.isLogin = async (req, res, next) => {
   if (!req.cookies.token) {
     res.status(401);
-    req.flash("tokenError", "something went wrong login first");
-    console.log("from first");
+    req.flash("tokenInfo", "something went wrong login first");
     return res.redirect("/");
   }
   try {
@@ -13,12 +12,12 @@ module.exports.isLogin = async (req, res, next) => {
     let { id } = decodedData;
     let userData = await usermodel.findOne({ _id: id }).select("-password");
     req.user = userData;
+    // req.flash("tokenInfo", "Sucessfully login");
     // console.log(userData);
     next();
   } catch (err) {
     res.status(401);
-    console.log("from second");
-    req.flash("tokenError", "something went wrong login first");
+    req.flash("tokenInfo", "something went wrong login first");
     return res.redirect("/");
   }
 };

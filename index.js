@@ -33,6 +33,8 @@ app.use("/product", productRouter);
 app.use("/user", userRouter);
 //route
 app.get("/", (req, res) => {
-  res.render("login.ejs");
+  let alert = req.flash("tokenInfo");
+  console.log(alert);
+  res.render("login.ejs", { alert });
 });
 app.listen(3000);
