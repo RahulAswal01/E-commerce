@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const postschema = mongoose.Schema({
-  image: String,
-  name: String,
-  bgColor: String,
-  price: Number,
+  productImage: String,
+  productName: String,
+  backgroundColor: String,
+  productPrice: Number,
   discount: String,
   panelColor: String,
   textColor: String,

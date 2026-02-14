@@ -1,11 +1,8 @@
 const express = require("express");
-const ownermodel = require("../models/ownermodel");
+const { ownercheck } = require("../controllers/ownercheck");
+const { isOwner } = require("../middleware/isOwner");
 const Router = express.Router();
-const bcrypt = require("bcrypt");
 
-Router.get("/", (req, res) => {
-  res.send("hello from owner router");
-});
 if (process.env.NODE_ENV === "development") {
   Router.post("/createonwer", async (req, res) => {
     let checkowner = await ownermodel.find();
@@ -33,5 +30,8 @@ if (process.env.NODE_ENV === "development") {
     }
   });
 }
-
+Router.post("/ownercred", ownercheck);
+Router.get("/createproduct", isOwner, (req, res) => {
+  res.render("createProduct");
+});
 module.exports = Router;

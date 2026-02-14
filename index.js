@@ -33,6 +33,9 @@ app.use("/product", productRouter);
 app.use("/user", userRouter);
 //route
 app.get("/", (req, res) => {
+  if (req.cookies.ownertoken) {
+    res.clearCookie("ownertoken");
+  }
   let alert = req.flash("tokenInfo");
   console.log(alert);
   res.render("login.ejs", { alert });

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wdth,wght@90.2,262&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../stylesheets/base.css" />
+    <title>Create user</title>
+  </head>
+  <body>
+    <div
+      class="flex h-screen w-full bg-[#ebecf0] font-roboto font-light text-black"
+    >
+      <div class="h-full w-3/15 bg-[#f0e8e6]">
+        <h1 class="font-bold mx-5 mt-5 mb-5">Scatch</h1>
+        <div class="ml-8 mt-10">
+          <a href="#" class="mt-2 inline-block hover:font-bold">All Products</a>
+          <br />
+          <a href="#" class="mt-2 inline-block hover:font-bold"
+            >Create New Product</a
+          >
+        </div>
+      </div>
+      <div class="h-full w-12/15 flex flex-col border-l bg-[#f1ebeb]">
+        <h1 class="font-black ml-25 mt-10 mb-5 text-lg">Create New Product</h1>
+        <div>
+          <form
+            action="/product/onwer/createProduct"
+            method="post"
+            class="mx-15 p-5"
+            enctype="multipart/form-data"
+          >
+            <h1 class="font-bold mb-5 ml-10">Product Details</h1>
+            <input
+              type="file"
+              accept="image/*"
+              name="productImage"
+              required
+              class="w-70 font-semibold inline-block my-2 mx-3 outline-none border pl-2 rounded border-[#243c5a]"
+            />
+            <br />
+            <input
+              type="text"
+              name="productName"
+              required
+              placeholder="Product Name"
+              class="w-70 my-2 font-semibold inline-block my-2 mx-3 outline-none border pl-2 rounded border-[#243c5a]"
+            />
+            <input
+              type="text"
+              required
+              name="productPrice"
+              placeholder="Product Price"
+              class="w-70 font-semibold inline-block my-2 mx-3 outline-none border pl-2 rounded border-[#424947]"
+            />
+            <br />
+            <input
+              type="text"
+              required
+              name="discount"
+              placeholder="Discount Price"
+              class="w-70 font-semibold inline-block my-2 mx-3 outline-none border pl-2 rounded border-[#424947]"
+            />
+            <br />
+            <h1 class="font-bold mt-5 mb-3 ml-10">Panel Details</h1>
+            <input
+              type="text"
+              required
+              name="backgroundColor"
+              placeholder="Background Color"
+              class="w-70 my-2 font-semibold inline-block my-2 mx-3 outline-none border pl-2 rounded border-[#243c5a]"
+            />
+            <input
+              type="text"
+              required
+              name="panelColor"
+              placeholder="Panel Color"
+              class="w-70 font-semibold inline-block my-2 mx-3 outline-none border pl-2 rounded border-[#424947]"
+            />
+            <br />
+            <input
+              type="text"
+              required
+              name="textColor"
+              placeholder="Text Color"
+              class="w-70 font-semibold inline-block my-2 mx-3 outline-none border pl-2 rounded border-[#424947]"
+            />
+            <br />
+            <input
+              type="submit"
+              value="Create product"
+              class="w-40 border mt-2 ml-40 bg-blue-500 text-white py-1 font-bold rounded hover:bg-blue-800"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

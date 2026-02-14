@@ -3,8 +3,8 @@
 }
 body {
   font-family: "Roboto";
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
 }
 /* global.css */
 .no-spinner::-webkit-inner-spin-button,
