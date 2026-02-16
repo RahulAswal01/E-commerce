@@ -6,9 +6,17 @@ const Router = express.Router();
 
 const { isLogin } = require("../middleware/isLogin");
 
-Router.get("/home", isLogin, (req, res) => {
+Router.get("/home", isLogin, async (req, res) => {
   let alert = req.flash("tokenInfo");
-  res.render("product.ejs", { alert });
+  let products = await productmodel.find();
+  console.log(products);
+  // Convert buffer to base64 string
+  products = products.map((p) => ({
+    ...p.toObject(),
+    productImageBase64: p.productImage.toString("base64"),
+  }));
+
+  res.render("product.ejs", { alert, products });
 });
 
 Router.post(
@@ -24,16 +32,17 @@ Router.post(
       panelColor,
       textColor,
     } = req.body;
-    let { buffer } = req.file;
     await productmodel.create({
       productName,
+      contentType: req.file.mimetype,
       backgroundColor,
       productPrice,
       discount,
       panelColor,
       textColor,
-      productImage: buffer,
+      productImage: req.file.buffer,
     });
+    req.flash("success", "Product created successfully");
     res.redirect("/owner/createproduct");
   },
 );

@@ -32,6 +32,7 @@ if (process.env.NODE_ENV === "development") {
 }
 Router.post("/ownercred", ownercheck);
 Router.get("/createproduct", isOwner, (req, res) => {
-  res.render("createProduct");
+  let alert = req.flash("success");
+  res.render("createProduct", { alert });
 });
 module.exports = Router;

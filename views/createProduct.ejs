@@ -14,6 +14,17 @@
     <title>Create user</title>
   </head>
   <body>
+    <% if(alert.length>0){%>
+    <div
+      class="absolute left-1\2 w-full -translate-x-1\2 -translate-y-1\2 p-3 rounded-md flex justify-center"
+    >
+      <span
+        class="inline-block mt-1 w-80 mb-1 text-black font-extralight center bg-blue-500 rounded-md p-3"
+      >
+        <%=alert[0]%>
+      </span>
+    </div>
+    <%}%>
     <div
       class="flex h-screen w-full bg-[#ebecf0] font-roboto font-light text-black"
     >
@@ -53,7 +64,7 @@
               class="w-70 my-2 font-semibold inline-block my-2 mx-3 outline-none border pl-2 rounded border-[#243c5a]"
             />
             <input
-              type="text"
+              type="number"
               required
               name="productPrice"
               placeholder="Product Price"
@@ -61,7 +72,7 @@
             />
             <br />
             <input
-              type="text"
+              type="number"
               required
               name="discount"
               placeholder="Discount Price"

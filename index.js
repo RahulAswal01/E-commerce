@@ -37,7 +37,6 @@ app.get("/", (req, res) => {
     res.clearCookie("ownertoken");
   }
   let alert = req.flash("tokenInfo");
-  console.log(alert);
   res.render("login.ejs", { alert });
 });
 app.listen(3000);
