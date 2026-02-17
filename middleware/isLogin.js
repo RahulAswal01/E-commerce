@@ -12,8 +12,6 @@ module.exports.isLogin = async (req, res, next) => {
     let { id } = decodedData;
     let userData = await usermodel.findOne({ _id: id }).select("-password");
     req.user = userData;
-    // req.flash("tokenInfo", "Sucessfully login");
-    // console.log(userData);
     next();
   } catch (err) {
     res.status(401);

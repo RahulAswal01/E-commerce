@@ -2,14 +2,12 @@ const express = require("express");
 const productmodel = require("../models/productmodel");
 const { isOwner } = require("../middleware/isOwner");
 const { upload } = require("../config/multerconfig");
-const Router = express.Router();
-
 const { isLogin } = require("../middleware/isLogin");
+const Router = express.Router();
 
 Router.get("/home", isLogin, async (req, res) => {
   let alert = req.flash("tokenInfo");
   let products = await productmodel.find();
-  console.log(products);
   // Convert buffer to base64 string
   products = products.map((p) => ({
     ...p.toObject(),
@@ -17,6 +15,10 @@ Router.get("/home", isLogin, async (req, res) => {
   }));
 
   res.render("product.ejs", { alert, products });
+});
+
+Router.get("/addToCart/:productId", isLogin, (req, res) => {
+  res.send("meri babu no. 1");
 });
 
 Router.post(
@@ -47,7 +49,7 @@ Router.post(
   },
 );
 
-Router.get("/logout", (req, res) => {
+Router.get("/logout", isLogin, (req, res) => {
   res.clearCookie("token");
   req.flash("tokenInfo", "logout sucessfull");
   res.redirect("/");
