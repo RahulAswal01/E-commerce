@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../stylesheets/base.css" />
+    <title>product view</title>
+  </head>
+  <body>
+    <div class="h-screen w-full bg-[#ebecf0]">
+      <div
+        class="h-18 text-black flex justify-between pt-5 bg-[#d1d8de] px-10 text-lg font-extralight"
+      >
+        <div><h1 class="font-bold">Scatch.</h1></div>
+        <div class="mx-3">
+          <a href="#" class="mx-2 hover:font-medium hover:text-[#35363b]"
+            >Home</a
+          >
+          <a href="#" class="mx-2 hover:font-medium hover:text-[#35363b]"
+            >Product</a
+          >
+          <a href="#" class="mx-2 hover:font-medium hover:text-[#35363b]"
+            >Cart</a
+          >
+          <a href="#" class="mx-2 hover:font-medium hover:text-[#35363b]"
+            >My account</a
+          >
+        </div>
+      </div>
+      <div class="flex w-full font-roboto font-light text-black flex">
+        <!-- <div class="w-full border h-100">helo</div> -->
+        <div class="w-3/10">
+          <div
+            class="max-h-70 max-w-60 ml-10 mt-20 h-auto w-auto overflow-hidden"
+          >
+            <img src="<%=imageSrc%>" alt="product image" class="rounded" />
+          </div>
+        </div>
+        <div class="w-7/10 pl-20 pt-20">
+          <div>
+            <h1 class="text-3xl pb-5 text-extrabold "><%=product.productName%></h1>
+            <br />
+            <div class="flex gap-20 pb-5">
+              <h1 class="text-xl font-light">Product price : <%=product.productPrice%> &#8377</h1>
+              <h1 class="text-xl font-light">Discount on product : <%=product.discount%> &#8377</h1>
+            </div>
+            <br />
+            <h1 class="text-xl font-light pb-5">Net selling price : <%=product.productPrice - product.discount%> &#8377</h1>
+            <br />
+            <a
+              href="#"
+              class="bg-[#727a17] text-md px-15 rounded-xl hover:bg-[#99a60f] py-2 mr-25"
+              >Add to Cart</a
+            >
+            <a
+              href="/product/payment"
+              class="bg-[#3ba9ff] text-md px-15 rounded-xl hover:bg-[#68b3ed] py-2"
+              >Buy now</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

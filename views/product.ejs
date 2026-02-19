@@ -15,7 +15,7 @@
   rel="stylesheet"
 />
     <link rel="stylesheet" href="../stylesheets/base.css" />
-    <title>Register || Login</title>
+    <title>Product page</title>
   </head>
   <body>
     <% if(alert.length>0){%>
@@ -71,20 +71,30 @@
         <div class="w-5/6 py-10 px-15 flex flex-wrap gap-5">
           <%products.forEach((product)=>{%>
             <div class="h-45 w-40 bg-[<%=product.backgroundColor%>] rounded-xl">
-            <div class="h-6/8 overflow-hidden object-cover">
+              <a href="/product/bag/<%=product._id%>">
+                <div class="h-6/8 overflow-hidden object-cover">
                   <img 
                     src="data:<%= product.contentType %>;base64,<%= product.productImageBase64 %>" 
                     alt="product image" 
                   />
-
-
-            </div>
+                </div>
+              </a>  
             <div class="h-2/8 font-light text-sm pl-5 pt-1  text-[<%=product.textColor%>] bg-[<%=product.panelColor%>] flex justify-between">
               <div>
                 <h1><%=product.productName%></h1>
                 <h1> &#8377 <%=product.productPrice - product.discount%></h1>
               </div>
-              <a href="/product/addToCart/<%=product._id%>" class="mt-2 mr-2 pl-1" ><i class="bg-zinc-600 cursor-pointer hover:bg-zinc-700 p-1 rounded-full ri-add-large-line"></i></a>
+              <a href="/product/addToCart/<%=product._id%>" class="mt-2 mr-2 pl-1" >
+                <%if(!userdata.cart.includes(product._id)){%>
+                  <i class="bg-zinc-600 cursor-pointer hover:bg-zinc-700 p-1 rounded-full ri-add-large-line"
+                  title="Add to Cart"></i>
+                  
+                <%}else{%>
+                  <i class=" bg-zinc-600 cursor-pointer hover:bg-zinc-700 p-1 rounded-full  ri-check-fill"
+                  title="Added to Cart"></i>
+                <%}%>
+                
+              </a>
             </div>
           </div>
           <%})%>
