@@ -7,10 +7,10 @@ module.exports.addToCart = async (req, res) => {
       req.user.cart.push(req.params.productId);
       await req.user.save();
       req.flash("tokenInfo", "Product added to cart successfully");
-      res.redirect("/product/home");
+      res.redirect(req.get("Referrer"));
     } else {
       req.flash("tokenInfo", "Product already exits in your basket");
-      res.redirect("/product/home");
+      res.redirect(req.get("Referrer"));
     }
   } catch {
     req.flash("tokenInfo", "something went wrong try again later");

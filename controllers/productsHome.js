@@ -10,6 +10,5 @@ module.exports.productsHome = async (req, res) => {
     ...p.toObject(),
     productImageBase64: p.productImage.toString("base64"),
   }));
-
   res.render("product.ejs", { alert, products, userdata });
 };
