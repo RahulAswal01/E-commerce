@@ -1,13 +1,19 @@
 const express = require("express");
+const bcrypt = require("bcrypt");
+const ownermodel = require("../models/ownermodel");
 const { ownercheck } = require("../controllers/ownercheck");
 const { isOwner } = require("../middleware/isOwner");
 const Router = express.Router();
 
 if (process.env.NODE_ENV === "development") {
-  Router.post("/createonwer", async (req, res) => {
+  Router.post("/createowner", async (req, res) => {
     let checkowner = await ownermodel.find();
     if (checkowner.length > 0) return res.send("not able to create owner");
     let { email, password, name } = req.body;
+    // console.log(email);
+    // console.log(password);
+    // console.log(name);
+
     try {
       bcrypt.genSalt(12, async (err, salt) => {
         if (err) {

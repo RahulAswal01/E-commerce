@@ -7,13 +7,13 @@ const userSchema = mongoose.Schema({
   cart: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
+      ref: "product",
     },
   ],
   orders: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
+      ref: "product",
     },
   ],
   contact: Number,

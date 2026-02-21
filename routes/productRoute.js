@@ -1,5 +1,6 @@
 const express = require("express");
 const productmodel = require("../models/productmodel");
+const usermodel = require("../models/usermodel");
 const { addToCart } = require("../controllers/addToCart");
 const { isOwner } = require("../middleware/isOwner");
 const { upload } = require("../config/multerconfig");
@@ -8,6 +9,8 @@ const { singleItem } = require("../controllers/singleItem");
 const { isLogin } = require("../middleware/isLogin");
 const { logout } = require("../controllers/logout");
 const { createProduct } = require("../controllers/createProduct");
+const { cartView } = require("../controllers/cartview");
+const { removecart } = require("../controllers/removeCart");
 const Router = express.Router();
 
 Router.get("/home", isLogin, productsHome);
@@ -22,6 +25,10 @@ Router.post(
 );
 
 Router.get("/bag/:product_id", isLogin, singleItem);
+
+Router.get("/cart/remove/:product_id", isLogin, removecart);
+
+Router.get("/cart", isLogin, cartView);
 
 Router.get("/payment", isLogin, (req, res) => {
   res.send("payment gateway");
