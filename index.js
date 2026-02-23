@@ -4,6 +4,7 @@ const express = require("express");
 const flash = require("connect-flash");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const Razorpay = require("razorpay");
 const app = express();
 const db = require("./config/mongoose-connection");
 const usermodel = require("./models/usermodel");

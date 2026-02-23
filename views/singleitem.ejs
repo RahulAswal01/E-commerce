@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap"
       rel="stylesheet"
     />
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <link rel="stylesheet" href="../stylesheets/base.css" />
     <title>product view</title>
   </head>
@@ -67,16 +68,88 @@
               class="bg-[#727a17] text-md px-15 rounded-xl hover:bg-[#99a60f] py-2 mr-25"
               >Add to Cart</a
             >
-            <a
-              href="/product/payment"
-              class="bg-[#3ba9ff] text-md px-15 rounded-xl hover:bg-[#68b3ed] py-2"
-              >Buy now</a
+            <button
+              class="bg-[#3ba9ff] text-md px-15 rounded-xl hover:bg-[#68b3ed] py-2 cursor-pointer" id="rzp-button2"
+              >Buy now</button
             >
           </div>
         </div>
       </div>
     </div>
     <script>
+      var options = {
+    "key": "rzp_test_SJ5ZWZ31Gc83co", // Enter the Key ID generated from the Dashboard
+    "amount": <%=(product.productPrice - product.discount)*100%>,
+    "currency": "INR",
+    "description": "Acme Corp",
+    "image": "example.com/image/rzp.jpg",
+    "prefill":
+    {
+      "email": "rahulsingh1.unstoppable@gmail.com",
+      "contact": 9813228008,
+    },
+    config: {
+      display: {
+        blocks: {
+          utib: { //name for Axis block
+            name: "Pay Using Axis Bank",
+            instruments: [
+              {
+                method: "card",
+                issuers: ["UTIB"]
+              },
+              {
+                method: "netbanking",
+                banks: ["UTIB"]
+              },
+            ]
+          },
+          other: { //  name for other block
+            name: "Other Payment Methods",
+            instruments: [
+              {
+                method: "card",
+                issuers: ["ICIC"]
+              },
+              {
+                method: 'netbanking',
+              }
+            ]
+          }
+        },
+        sequence: ["block.utib", "block.other"],
+        preferences: {
+          show_default_blocks: true // Should Checkout show its default blocks?
+        }
+      }
+    },
+    "handler": function (response) {
+      alert(response.razorpay_payment_id);
+    },
+    "modal": {
+      "ondismiss": function () {
+        if (confirm("Are you sure, you want to close the form?")) {
+          txt = "You pressed OK!";
+          console.log("Checkout form closed by the user");
+        } else {
+          txt = "You pressed Cancel!";
+          console.log("Complete the Payment")
+        }
+      }
+    }
+  };
+  var rzp1 = new Razorpay(options);
+  document.getElementById('rzp-button2').onclick = function (e) {
+    rzp1.open();
+    e.preventDefault();
+  }
+
+
+
+
+
+
+
   // Auto-hide after 5 seconds
     setTimeout(function() {
       const alert = document.getElementById("flash-alert");

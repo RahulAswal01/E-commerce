@@ -30,10 +30,6 @@ Router.get("/cart/remove/:product_id", isLogin, removecart);
 
 Router.get("/cart", isLogin, cartView);
 
-Router.get("/payment", isLogin, (req, res) => {
-  res.send("payment gateway");
-});
-
 Router.get("/logout", isLogin, logout);
 
 module.exports = Router;

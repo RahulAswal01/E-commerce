@@ -1,6 +1,9 @@
 module.exports.cartView = async (req, res) => {
   let user = await req.user.populate("cart");
-  const grandTotal = 0;
   let alert = req.flash("tokenInfo");
-  res.render("cart", { user, grandTotal, alert });
+  let grandTotal = 0;
+  user.cart.forEach((val) => {
+    grandTotal += val.productPrice - val.discount;
+  });
+  res.render("cart", { user, alert, grandTotal });
 };
