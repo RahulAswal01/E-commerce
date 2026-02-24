@@ -9,7 +9,7 @@ const { singleItem } = require("../controllers/singleItem");
 const { isLogin } = require("../middleware/isLogin");
 const { logout } = require("../controllers/logout");
 const { createProduct } = require("../controllers/createProduct");
-const { cartView } = require("../controllers/cartview");
+const { cartView } = require("../controllers/cartView");
 const { removecart } = require("../controllers/removeCart");
 const Router = express.Router();
 

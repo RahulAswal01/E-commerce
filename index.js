@@ -40,10 +40,8 @@ app.get("/", (req, res) => {
   let alert = req.flash("tokenInfo");
   res.render("login.ejs", { alert });
 });
-app.listen(3000, () => {
-  if (process.env.NODE_ENV == "development") {
-    console.log("in development mode");
-  } else {
-    console.log("in production mode");
-  }
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("server running on port : ", PORT);
 });
