@@ -7,9 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap"
-      rel="stylesheet"
-    />
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+  rel="stylesheet"
+/>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <link rel="stylesheet" href="../stylesheets/base.css" />
     <title>product view</title>
@@ -28,7 +28,7 @@
     <%}%>
     <div class="h-screen w-full bg-[#ebecf0]">
       <div
-        class="h-18 text-black flex justify-between pt-5 bg-[#d1d8de] px-10 text-lg font-extralight"
+        class="h-16 text-black flex justify-between pt-5 bg-[#d1d8de] px-10 text-lg font-extralight" id="header"
       >
         <div><h1 class="font-bold">Scatch.</h1></div>
         <div class="mx-3">
@@ -54,7 +54,7 @@
         </div>
         <div class="w-7/10 pl-20 pt-20">
           <div>
-            <h1 class="text-3xl pb-5 text-extrabold "><%=product.productName%></h1>
+            <h1 class="text-3xl pb-5"><%=product.productName%></h1>
             <br />
             <div class="flex gap-20 pb-5">
               <h1 class="text-xl font-light">Product price : <%=product.productPrice%> &#8377</h1>

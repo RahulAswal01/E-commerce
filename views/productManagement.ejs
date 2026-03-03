@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wdth,wght@90.2,262&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../stylesheets/base.css" />
+    <title>Product checkout</title>
+  </head>
+  <body>
+    <% if(alert.length>0){%>
+    <div id="flash-alert"
+      class="absolute left-1\2 w-full -translate-x-1\2 -translate-y-1\2 p-3 rounded-md flex justify-center"
+    >
+      <span
+        class="inline-block mt-1 w-80 mb-1 text-black font-extralight center bg-[#fff3cd] rounded-md p-3"
+      >
+        <%=alert[0]%>
+      </span>
+    </div>
+    <%}%>
+    <div
+      class="flex h-screen w-full bg-[#ebecf0] font-roboto font-light text-black"
+    >
+      <div class="h-full w-3/15 bg-[#f0e8e6] shrink-0 ">
+        <h1 class="font-bold mx-5 mt-5 mb-5">Scatch</h1>
+        <div class="ml-8 mt-10">
+          <a
+            href="/owner/createproduct"
+            class="mt-2 inline-block hover:font-bold"
+            >Create new product</a
+          >
+          <br />
+          <a href="#" class="mt-2 inline-block hover:font-bold">Logout</a>
+        </div>
+      </div>
+      <div class="h-full w-12/15 border-l bg-[#f1ebeb] flex-1 overflow-y-auto ">
+        <h1 class="font-black ml-25 mt-10 mb-5 text-lg">All Product</h1>
+        <div class="flex flex-wrap gap-5 pl-15 bg-[#f1ebeb]">
+          <%products.forEach((product)=>{%>
+            <div class="h-45 w-40 bg-[<%=product.backgroundColor%>]">
+              <a href="/product/bag/<%=product._id%>">
+                <div class="h-6/8 overflow-hidden object-cover">
+                  <img 
+                    src="data:<%= product.contentType %>;base64,<%= product.productImageBase64 %>" 
+                    alt="product image" 
+                  />
+                </div>
+              </a>  
+            <div class="h-2/8 font-light text-sm pl-5 pt-1  text-[<%=product.textColor%>] bg-[<%=product.panelColor%>] flex justify-between">
+              <div>
+                <h1><%=product.productName%></h1>
+                <h1> &#8377 <%=product.productPrice - product.discount%></h1>
+              </div>
+              <div class="my-1 mx-2">
+                <a href="/owner/delete/<%=product._id%>"
+                  ><i class="fa-solid fa-trash-can bg-[#f08b8b] cursor-pointer hover:bg-[#d42c2c] rounded-md p-1 pr-4 h-6 w-7" style="color: rgb(11, 7, 7);"></i></a>
+              </div>
+            </div>
+          </div>
+          <%})%>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Auto-hide after 5 seconds
+      setTimeout(function () {
+        const alert = document.getElementById("flash-alert");
+        if (alert) {
+          alert.style.transition = "opacity 0.5s ease"; // smooth fade
+          alert.style.opacity = "0";
+          setTimeout(() => alert.remove(), 500); // remove from DOM after fade
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
