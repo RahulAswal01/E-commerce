@@ -1,6 +1,4 @@
 const express = require("express");
-const productmodel = require("../models/productmodel");
-const usermodel = require("../models/usermodel");
 const { addToCart } = require("../controllers/addToCart");
 const { isOwner } = require("../middleware/isOwner");
 const { upload } = require("../config/multerconfig");

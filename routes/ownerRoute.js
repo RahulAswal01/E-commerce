@@ -3,44 +3,19 @@ const bcrypt = require("bcrypt");
 const ownermodel = require("../models/ownermodel");
 const { productManagement } = require("../controllers/productManagement");
 const { ownercheck } = require("../controllers/ownercheck");
+const { ownerLogout } = require("../controllers/ownerLogout");
 const { deleteProduct } = require("../controllers/deleteProduct");
 const { isOwner } = require("../middleware/isOwner");
+const { createOwner } = require("../controllers/createOwner");
 const Router = express.Router();
 
 if (process.env.NODE_ENV === "development") {
-  Router.post("/createowner", async (req, res) => {
-    let checkowner = await ownermodel.find();
-    if (checkowner.length > 0) return res.send("not able to create owner");
-    let { email, password, name } = req.body;
-    // console.log(email);
-    // console.log(password);
-    // console.log(name);
-
-    try {
-      bcrypt.genSalt(12, async (err, salt) => {
-        if (err) {
-          return res.send(err.message);
-        }
-        bcrypt.hash(password, salt, async (err, hash) => {
-          if (err) {
-            return res.send(err.message);
-          }
-          let newOwner = await ownermodel.create({
-            email,
-            password: hash,
-            name,
-          });
-          res.send(newOwner);
-        });
-      });
-    } catch (err) {
-      res.send(err);
-    }
-  });
+  Router.post("/createowner", createOwner);
 }
 Router.post("/ownercred", ownercheck);
 Router.get("/productManagement", isOwner, productManagement);
 Router.get("/delete/:product_id", isOwner, deleteProduct);
+Router.get("/logout", isOwner, ownerLogout);
 Router.get("/createproduct", isOwner, (req, res) => {
   let alert = req.flash("success");
   res.render("createProduct", { alert });
