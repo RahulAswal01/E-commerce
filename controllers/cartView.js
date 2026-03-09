@@ -5,5 +5,6 @@ module.exports.cartView = async (req, res) => {
   user.cart.forEach((val) => {
     grandTotal += val.productPrice - val.discount;
   });
-  res.render("cart", { user, alert, grandTotal });
+  const payment_key = process.env.RAZORPAY_KEY_ID;
+  res.render("cart", { user, alert, grandTotal, payment_key });
 };

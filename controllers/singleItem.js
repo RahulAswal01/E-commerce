@@ -4,8 +4,9 @@ module.exports.singleItem = async (req, res) => {
   const product = await productmodel.findOne({ _id: req.params.product_id });
   // Convert buffer to base64 string
   const base64Image = product.productImage.toString("base64");
+  const payment_key = process.env.RAZORPAY_KEY_ID;
 
   // Build a data URI with MIME type
   const imageSrc = `data:${product.contentType};base64,${base64Image}`;
-  res.render("singleitem", { product, imageSrc, alert });
+  res.render("singleitem", { product, imageSrc, alert, payment_key });
 };
