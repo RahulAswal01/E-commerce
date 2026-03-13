@@ -40,12 +40,12 @@
       </span>
     </div>
     <%}%>
-    <div class="h-screen w-full bg-[#ebecf0]">
+    <div class="h-full w-full bg-[#ebecf0]">
       <div
-        class="h-16 text-black flex justify-between pt-5 bg-[#d1d8de] px-10 text-lg font-extralight"
+        class="h-16 text-black flex justify-between pt-5 bg-[#d1d8de] px-10 text-lg font-extralight sticky top-0 " id="header"
       >
-        <div><h1 class="font-bold">Scatch.</h1></div>
-        <div class="mx-3">
+        <div><h1 class="font-bold text-2xl">Scatch.</h1></div>
+        <div class="mx-3 text-xl">
           <a
             href="/product/home"
             class="mx-2 hover:font-bold hover:text-[#35363b]"
@@ -59,8 +59,8 @@
       <div class="flex flex-col items-center">
         <%if(user.cart.length>0){%>
           <%user.cart.forEach((val)=>{%>
-            <div class="h-18 w-8/10 rounded-xl bg-zinc-500 mt-6 flex">
-              <div class="h-11 w-10 rounded mt-3 ml-4 overflow-hidden">
+            <div class="h-18 w-8/10 rounded-xl mt-6 flex" id="cart_product">
+              <div class="h-11 w-10 rounded mt-3 ml-4 overflow-hidden" id="cart_product_img">
                 <a href="/product/bag/<%=val._id%>"><img 
                   src="data:<%= val.contentType %>;base64,<%= val.productImage.toString('base64') %>" 
                   alt="product image" 
@@ -86,11 +86,11 @@
         <%}%>
       </div>
       <%if(user.cart.length>0){%>
-        <div class="h-18 w-full bg-green-500 rounded-t-2xl fixed bottom-0">
+        <div class="h-18 w-full bg-[#ffcc91] rounded-t-2xl fixed bottom-0" id="cart_total">
             <div class=" flex justify-between">
               <h1 class="text-xl mt-5 ml-10">Grand Total : &#8377 <%=grandTotal%> </h1>
               <button
-                  class="text-xl mt-5 mr-10 bg-zinc-500 px-5 py-1 rounded-xl cursor-pointer" id="rzp-button1"
+                  class="text-xl mt-5 mr-10 bg-[#b0e8db] px-5 py-1 rounded-xl cursor-pointer" id="rzp-button1"
                   >&#8377 &#8377 Pay now &#8377 &#8377 </button
               >
             </div>

@@ -16,3 +16,33 @@ body {
 .no-spinner {
   -moz-appearance: textfield;
 }
+
+#single_content {
+  box-shadow: 8px 6px 12px rgb(55, 59, 66);
+}
+#side_bar {
+  box-shadow: inset 18px 16px 60px rgb(207, 69, 222);
+}
+#header {
+  box-shadow: inset 18px 16px 60px rgb(201, 138, 228);
+}
+#cart_product {
+  box-shadow: 8px 6px 12px rgb(55, 59, 66);
+  background-color: #d3d7d5;
+}
+#cart_product_img {
+  box-shadow: 4px 4px 7px rgb(55, 59, 66);
+}
+#cart_total {
+  box-shadow: inset 18px 16px 60px rgb(241, 182, 32);
+}
+#rzp-button1 {
+  box-shadow: inset 18px 16px 60px rgb(116, 55, 222);
+}
+.single_item_image {
+  box-shadow: 12px 10px 12px rgb(55, 59, 66);
+}
+#cart_btn,
+#rzp-button2 {
+  box-shadow: 3px 4px 10px rgb(0, 0, 0);
+}
